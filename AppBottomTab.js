@@ -26,15 +26,10 @@ const Tab = createMaterialBottomTabNavigator();
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 //calling screen
-import HomeScreen from './screen/HomeScreen';
-
-import CatListScreen from './screen/category/CatListScreen';
-import CatInsertScreen from './screen/category/CatInsertScreen';
-import CatUpdateScreen from './screen/category/CatUpdateScreen';
-
-import BookListScreen from './screen/book/BookListScreen';
-import BookInsertScreen from './screen/book/BookInsertScreen';
-import BookUpdateScreen from './screen/book/BookUpdateScreen';
+import HomeScreen from './screen_nav/HomeScreen';
+import NotifScreen from './screen_nav/NotifScreen';
+import SettingScreen from './screen_nav/SettingScreen';
+import ProfileScreen from './screen_nav/ProfileScreen';
 
 export default function App() {
   return (
@@ -42,12 +37,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown:false}}>
             <Stack.Screen name="HomeTab" component={HomeTab} />
-            <Stack.Screen name="CatListScreen" component={CatListScreen} />
-            <Stack.Screen name="CatInsertScreen" component={CatInsertScreen} />
-            <Stack.Screen name="CatUpdateScreen" component={CatUpdateScreen} />
-            <Stack.Screen name="BookListScreen" component={BookListScreen} />
-            <Stack.Screen name="BookInsertScreen" component={BookInsertScreen} />
-            <Stack.Screen name="BookUpdateScreen" component={BookUpdateScreen} />
+            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
           </Stack.Navigator>
     	  </NavigationContainer>
       </PaperProvider>
@@ -73,22 +63,22 @@ function HomeTab() {
         }} 
       />
       <Tab.Screen 
-        name="CategoryTab" 
-        component={CatListScreen}
+        name="NotifScreen" 
+        component={NotifScreen}
         options={{
-          tabBarLabel: 'Category',
+          tabBarLabel: 'Notif',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="folder" color={color} size={26} />
+            <MaterialCommunityIcons name="bell" color={color} size={26} />
           ),
         }} 
       />
       <Tab.Screen 
-        name="BookTab" 
-        component={BookListScreen}
+        name="SettingScreen" 
+        component={SettingScreen}
         options={{
-          tabBarLabel: 'Book',
+          tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="book" color={color} size={26} />
+            <MaterialCommunityIcons name="cog" color={color} size={26} />
           ),
         }} 
       />
