@@ -6,7 +6,7 @@ export default function CatUpdateScreen({ navigation, route }) {
         <>
             <Appbar.Header>
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
-                <Appbar.Content title={route.params.nama} />
+                <Appbar.Content title={route.params.name} />
             </Appbar.Header>
         </>
     )

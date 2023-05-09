@@ -14,15 +14,15 @@ export default function CatListScreen({ navigation }) {
     //get data using supabase API
     const getData = async() => {
         const { data, error } = await supabase
-                                    .from('kategori')
-                                    .select('id, nama');
+                                    .from('category')
+                                    .select('id, name');
         setDataList(data);
     }
 
     //get data using manual fetch process
     const getDataManual = async() => {
         //request
-        fetch("https://cdjndiwlkguoekmsamkv.supabase.co/rest/v1/kategori?select=id,nama", {
+        fetch("https://cdjndiwlkguoekmsamkv.supabase.co/rest/v1/category?select=id,name", {
             method: 'get',
             headers: new Headers({
                 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkam5kaXdsa2d1b2VrbXNhbWt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTczNjI1NTIsImV4cCI6MTk3MjkzODU1Mn0.fZzlfdwRpKp5e3nkw-8FrmSGYJyejnz5Dlh_21o-MW4', 
@@ -47,9 +47,9 @@ export default function CatListScreen({ navigation }) {
             <List.Section>
                 {dataList.map((row) => 
                     <List.Item
-                        title={row.nama}
+                        title={row.name}
                         right={() => <List.Icon icon="pencil" />}
-                        onPress={() => navigation.navigate('CatUpdateScreen', {id:row.id, nama:row.nama})}
+                        onPress={() => navigation.navigate('CatUpdateScreen', {id:row.id, name:row.name})}
                     />
                 )}
             </List.Section>
