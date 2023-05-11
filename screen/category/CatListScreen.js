@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 import { Appbar, List } from 'react-native-paper';
 import supabase from '../../config/supabase';
 
@@ -45,13 +46,24 @@ export default function CatListScreen({ navigation }) {
             </Appbar.Header>
 
             <List.Section>
-                {dataList.map((row) => 
+                <FlatList
+                    data={dataList}
+                    renderItem={({item}) => 
+                        <List.Item
+                            title={item.name}
+                            right={() => <List.Icon icon="pencil" />}
+                            onPress={() => navigation.navigate('CatUpdateScreen', {id:item.id, name:item.name})}
+                        />
+                    }
+                    keyExtractor={item => item.id}
+                />
+                {/* {dataList.map((row) => 
                     <List.Item
                         title={row.name}
                         right={() => <List.Icon icon="pencil" />}
                         onPress={() => navigation.navigate('CatUpdateScreen', {id:row.id, name:row.name})}
                     />
-                )}
+                )} */}
             </List.Section>
         </>
     )
