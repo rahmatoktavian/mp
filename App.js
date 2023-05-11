@@ -29,12 +29,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from './screen/HomeScreen';
 
 import CatListScreen from './screen/category/CatListScreen';
-import CatInsertScreen from './screen/category/CatInsertScreen';
-import CatUpdateScreen from './screen/category/CatUpdateScreen';
+// import CatInsertScreen from './screen/category/CatInsertScreen';
+// import CatUpdateScreen from './screen/category/CatUpdateScreen';
 
 import BookListScreen from './screen/book/BookListScreen';
-import BookInsertScreen from './screen/book/BookInsertScreen';
-import BookUpdateScreen from './screen/book/BookUpdateScreen';
+// import BookInsertScreen from './screen/book/BookInsertScreen';
+// import BookUpdateScreen from './screen/book/BookUpdateScreen';
 
 export default function App() {
   return (
@@ -43,11 +43,11 @@ export default function App() {
           <Stack.Navigator screenOptions={{headerShown:false}}>
             <Stack.Screen name="HomeTab" component={HomeTab} />
             <Stack.Screen name="CatListScreen" component={CatListScreen} />
-            <Stack.Screen name="CatInsertScreen" component={CatInsertScreen} />
-            <Stack.Screen name="CatUpdateScreen" component={CatUpdateScreen} />
+            {/* <Stack.Screen name="CatInsertScreen" component={CatInsertScreen} />
+            <Stack.Screen name="CatUpdateScreen" component={CatUpdateScreen} /> */}
             <Stack.Screen name="BookListScreen" component={BookListScreen} />
-            <Stack.Screen name="BookInsertScreen" component={BookInsertScreen} />
-            <Stack.Screen name="BookUpdateScreen" component={BookUpdateScreen} />
+            {/* <Stack.Screen name="BookInsertScreen" component={BookInsertScreen} />
+            <Stack.Screen name="BookUpdateScreen" component={BookUpdateScreen} /> */}
           </Stack.Navigator>
     	  </NavigationContainer>
       </PaperProvider>
