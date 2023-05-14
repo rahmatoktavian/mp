@@ -10,13 +10,14 @@ export default function CatListScreen({ navigation }) {
     //initial function (first function will run in this page)
     useEffect(() => {
         getData();
-    });
+    }, []);
 
     //get data using supabase API
     const getData = async() => {
         const { data, error } = await supabase
                                     .from('category')
-                                    .select('id, name');
+                                    .select('id, name')
+                                    .order('id', {ascending:false});
         setDataList(data);
     }
 
@@ -42,7 +43,7 @@ export default function CatListScreen({ navigation }) {
         <>
             <Appbar.Header>
                 <Appbar.Content title="Category" />
-                <Appbar.Action icon="plus-circle" onPress={() => navigation.navigate('CatInsertScreen')} />
+                <Appbar.Action icon="plus-circle" onPress={() => navigation.navigate('CatInsertScreen')} size={26} style={{margin:10}} />
             </Appbar.Header>
 
             <List.Section>
@@ -52,18 +53,11 @@ export default function CatListScreen({ navigation }) {
                         <List.Item
                             title={item.name}
                             right={() => <List.Icon icon="pencil" />}
-                            onPress={() => navigation.navigate('CatUpdateScreen', {id:item.id, name:item.name})}
+                            onPress={() => navigation.navigate('CatUpdateScreen', {id:item.id})}
                         />
                     }
                     keyExtractor={item => item.id}
                 />
-                {/* {dataList.map((row) => 
-                    <List.Item
-                        title={row.name}
-                        right={() => <List.Icon icon="pencil" />}
-                        onPress={() => navigation.navigate('CatUpdateScreen', {id:row.id, name:row.name})}
-                    />
-                )} */}
             </List.Section>
         </>
     )
