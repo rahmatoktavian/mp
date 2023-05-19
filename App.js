@@ -9,6 +9,7 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: 'green',
+    secondaryContainer: 'lightgreen',
     accent: 'black',
   },
 };
@@ -66,7 +67,6 @@ function HomeTab() {
         component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
-          tabBarColor: 'red',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),

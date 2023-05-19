@@ -22,6 +22,8 @@ export default function CatUpdateScreen({ navigation, route }) {
                                     .select('name')
                                     .eq('id', id)
                                     .single();
+
+        //assign value to input
         setInputName(data.name);
     }
 
@@ -33,9 +35,15 @@ export default function CatUpdateScreen({ navigation, route }) {
                                     .eq('id', id)
 
         //display notif then move to list screen
-        Alert.alert('Message', 'Data Updated', [
-            {text: 'OK', onPress: () => navigation.push('CatListScreen')},
-        ]);
+        if(error) {
+            Alert.alert('Alert', error.message, [
+                {text: 'OK'},
+            ]);
+        } else {
+            Alert.alert('Message', 'Data Updated', [
+                {text: 'OK', onPress: () => navigation.goBack()},
+            ]);
+        }
     }
 
     //delete confirmation
@@ -55,7 +63,7 @@ export default function CatUpdateScreen({ navigation, route }) {
 
         //display notif then move to list screen
         Alert.alert('Message', 'Data Deleted', [
-            {text: 'OK', onPress: () => navigation.push('CatListScreen')},
+            {text: 'OK', onPress: () => navigation.goBack()},
         ]);
     }
 

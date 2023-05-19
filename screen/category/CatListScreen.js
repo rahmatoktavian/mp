@@ -9,8 +9,12 @@ export default function CatListScreen({ navigation }) {
 
     //initial function (first function will run in this page)
     useEffect(() => {
-        getData();
-    }, []);
+        const unsubscribe = navigation.addListener('focus', () => {
+            getData();
+        });
+    
+        return unsubscribe;
+    }, [navigation]);
 
     //get data using supabase API
     const getData = async() => {
@@ -52,6 +56,7 @@ export default function CatListScreen({ navigation }) {
                     renderItem={({item}) => 
                         <List.Item
                             title={item.name}
+                            left={() => <List.Icon icon="folder" style={{marginLeft:10}} />}
                             right={() => <List.Icon icon="pencil" />}
                             onPress={() => navigation.navigate('CatUpdateScreen', {id:item.id})}
                         />

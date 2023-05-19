@@ -6,7 +6,7 @@ import supabase from '../../config/supabase';
 export default function CatInsertScreen({ navigation }) {
     //state
     const [inputName, setInputName] = useState('');
-
+    
     //insert data to supabase
     const onSave = async() => {
         const { data, error } = await supabase
@@ -14,9 +14,15 @@ export default function CatInsertScreen({ navigation }) {
                                     .insert({ name:inputName });
 
         //display notif then move to list screen
-        Alert.alert('Message', 'Data Inserted', [
-            {text: 'OK', onPress: () => navigation.push('CatListScreen')},
-        ]);
+        if(error) {
+            Alert.alert('Alert', error.message, [
+                {text: 'OK'},
+            ]);
+        } else {
+            Alert.alert('Message', 'Data Inserted', [
+                {text: 'OK', onPress: () => navigation.goBack()},
+            ]);
+        }
     }
 
     return(
