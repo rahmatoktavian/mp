@@ -50,20 +50,18 @@ export default function CatListScreen({ navigation }) {
                 <Appbar.Action icon="plus-circle" onPress={() => navigation.navigate('CatInsertScreen')} size={26} style={{margin:10}} />
             </Appbar.Header>
 
-            <List.Section>
-                <FlatList
-                    data={dataList}
-                    renderItem={({item}) => 
-                        <List.Item
-                            title={item.name}
-                            left={() => <List.Icon icon="folder" style={{marginLeft:10}} />}
-                            right={() => <List.Icon icon="pencil" />}
-                            onPress={() => navigation.navigate('CatUpdateScreen', {id:item.id})}
-                        />
-                    }
-                    keyExtractor={item => item.id}
-                />
-            </List.Section>
+            <FlatList
+                data={dataList}
+                renderItem={({item}) => 
+                    <List.Item
+                        title={item.name}
+                        left={() => <List.Icon icon="folder" style={{marginLeft:10}} />}
+                        right={() => <List.Icon icon="pencil" />}
+                        onPress={() => navigation.navigate('CatUpdateScreen', {id:item.id})}
+                    />
+                }
+                keyExtractor={item => item.id}
+            />
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Appbar, List } from 'react-native-paper';
+import { Appbar, List, FAB } from 'react-native-paper';
 import supabase from '../../config/supabase';
 
 export default function BookListScreen({ navigation }) {
@@ -30,24 +30,28 @@ export default function BookListScreen({ navigation }) {
         <>
             <Appbar.Header>
                 <Appbar.Content title="Book" />
-                <Appbar.Action icon="plus-circle" onPress={() => navigation.navigate('BookInsertScreen')} size={26} style={{margin:10}} />
             </Appbar.Header>
 
-            <List.Section>
-                <FlatList
-                    data={dataList}
-                    renderItem={({item}) => 
-                        <List.Item
-                            title={item.title}
-                            description={item.category.name}
-                            left={() => <List.Icon icon="book" style={{marginLeft:20}} />}
-                            right={() => <List.Icon icon="pencil" />}
-                            onPress={() => navigation.navigate('BookUpdateScreen', {id:item.id})}
-                        />
-                    }
-                    keyExtractor={item => item.id}
-                />
-            </List.Section>
+            <FlatList
+                data={dataList}
+                renderItem={({item}) => 
+                    <List.Item
+                        title={item.title}
+                        description={item.category.name}
+                        left={() => <List.Icon icon="book" style={{marginLeft:20}} />}
+                        right={() => <List.Icon icon="pencil" />}
+                        onPress={() => navigation.navigate('BookUpdateScreen', {id:item.id})}
+                    />
+                }
+                keyExtractor={item => item.id}
+            />
+
+            <FAB
+                icon="plus"
+                size="small"
+                onPress={() => navigation.navigate('BookInsertScreen')}
+                style={{position: 'absolute', margin:20, right:0, bottom:0}}
+            />
         </>
     )
 }
