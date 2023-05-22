@@ -9,8 +9,8 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: 'green',
+    primaryContainer: 'lightgreen',
     secondaryContainer: 'lightgreen',
-    accent: 'black',
   },
 };
 
