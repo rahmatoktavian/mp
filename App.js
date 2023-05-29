@@ -37,6 +37,10 @@ import BookListScreen from './screen/book/BookListScreen';
 import BookInsertScreen from './screen/book/BookInsertScreen';
 import BookUpdateScreen from './screen/book/BookUpdateScreen';
 
+import ReportListScreen from './screen/report/ReportListScreen';
+import ReportTableScreen from './screen/report/ReportTableScreen';
+import ReportChartScreen from './screen/report/ReportChartScreen';
+
 export default function App() {
   return (
       <PaperProvider theme={theme}>
@@ -46,9 +50,14 @@ export default function App() {
             <Stack.Screen name="CatListScreen" component={CatListScreen} />
             <Stack.Screen name="CatInsertScreen" component={CatInsertScreen} />
             <Stack.Screen name="CatUpdateScreen" component={CatUpdateScreen} />
+
             <Stack.Screen name="BookListScreen" component={BookListScreen} />
             <Stack.Screen name="BookInsertScreen" component={BookInsertScreen} />
             <Stack.Screen name="BookUpdateScreen" component={BookUpdateScreen} />
+
+            <Stack.Screen name="ReportListScreen" component={ReportListScreen} />
+            <Stack.Screen name="ReportTableScreen" component={ReportTableScreen} />
+            <Stack.Screen name="ReportChartScreen" component={ReportChartScreen} />
           </Stack.Navigator>
     	  </NavigationContainer>
       </PaperProvider>
@@ -89,6 +98,16 @@ function HomeTab() {
           tabBarLabel: 'Book',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="book" color={color} size={26} />
+          ),
+        }} 
+      />
+      <Tab.Screen 
+        name="ReportTab" 
+        component={ReportListScreen}
+        options={{
+          tabBarLabel: 'Report',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="file" color={color} size={26} />
           ),
         }} 
       />
