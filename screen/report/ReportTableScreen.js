@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Appbar, DataTable } from 'react-native-paper';
+import { Appbar, DataTable, Searchbar } from 'react-native-paper';
 import supabase from '../../config/supabase';
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
@@ -8,24 +8,26 @@ import { shareAsync } from 'expo-sharing';
 export default function ReportTableScreen({ navigation }) {
     //state for data
     const [dataList, setDataList] = useState([]);
+    const [searchText, setSearchText] = useState('');
 
     //initial function
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            getData();
-        });
-    
-        return unsubscribe;
-    }, [navigation]);
+        getData();
+    }, [searchText]);
 
     //get data
     const getData = async() => {
         const { data, error } = await supabase
-                                    .from('book')
-                                    .select('id, title, stock, category(name)')
-                                    .order('title', {ascending:true});
-        
+                    .from('book')
+                    .select('id, title, stock, category(name)')
+                    .order('stock', {ascending:true});
+
         setDataList(data);
+    }
+
+    const searchData = (text) => {
+        setSearchText(text)
+        getData()
     }
 
     //download data
@@ -66,6 +68,8 @@ export default function ReportTableScreen({ navigation }) {
                 <Appbar.Content title="Report Table" />
                 <Appbar.Action icon="download" onPress={() => downloadData()} />
             </Appbar.Header>
+
+            <Searchbar placeholder="Search" onChangeText={(text) => setSearchText(text)} value={searchText} />
 
             <DataTable>
                 <DataTable.Header>
