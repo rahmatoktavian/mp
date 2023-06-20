@@ -22,6 +22,13 @@ export default function ReportListScreen({ navigation }) {
                 onPress={() => navigation.navigate('ReportChartScreen')}
                 style={{margin:5}}
             />
+            <List.Item
+                title="API"
+                left={() => <List.Icon icon="api" style={{marginLeft:10}} />}
+                right={() => <List.Icon icon="arrow-right" />}
+                onPress={() => navigation.navigate('APIScreen')}
+                style={{margin:5}}
+            />
         </>
     )
 }
