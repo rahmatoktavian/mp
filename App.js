@@ -40,6 +40,7 @@ import BookUpdateScreen from './screen/book/BookUpdateScreen';
 import ReportListScreen from './screen/report/ReportListScreen';
 import ReportTableScreen from './screen/report/ReportTableScreen';
 import ReportChartScreen from './screen/report/ReportChartScreen';
+import APIScreen from './screen/report/APIScreen';
 
 export default function App() {
   return (
@@ -58,6 +59,7 @@ export default function App() {
             <Stack.Screen name="ReportListScreen" component={ReportListScreen} />
             <Stack.Screen name="ReportTableScreen" component={ReportTableScreen} />
             <Stack.Screen name="ReportChartScreen" component={ReportChartScreen} />
+            <Stack.Screen name="APIScreen" component={APIScreen} />
           </Stack.Navigator>
     	  </NavigationContainer>
       </PaperProvider>
